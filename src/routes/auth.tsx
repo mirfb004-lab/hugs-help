@@ -28,8 +28,8 @@ function UnlockPage() {
   useEffect(() => {
     if (typeof window !== "undefined" && window.localStorage.getItem(UNLOCK_KEY) === "true") {
       ensureSharedSession()
-        .then(() => navigate({ to: next || "/dashboard" }))
-        .catch(() => {});
+        .catch(() => {})
+        .finally(() => navigate({ to: next || "/dashboard" }));
     }
   }, [navigate, next]);
 
