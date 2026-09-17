@@ -1,12 +1,12 @@
-# Hugs & Help
+# Remix2of Mir smarter reel v3
 
-Hy
+Yep
 
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/dd631708-323d-40f9-a2eb-7158675ed319).
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/b0c2ef92-19a8-4105-bcf4-5b82bf61c3ce).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
 - **Stay in sync**: every change made in Lovable is committed straight to this repository.
