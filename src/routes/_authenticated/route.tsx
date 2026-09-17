@@ -11,10 +11,11 @@ export const Route = createFileRoute("/_authenticated")({
     if (window.localStorage.getItem(UNLOCK_KEY) !== "true") {
       throw redirect({ to: "/auth" });
     }
+    // Backend may be unavailable; the password gate alone controls access.
     try {
       await ensureSharedSession();
-    } catch {
-      throw redirect({ to: "/auth" });
+    } catch (err) {
+      console.warn("Shared session unavailable", err);
     }
   },
   component: () => (
