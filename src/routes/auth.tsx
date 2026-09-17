@@ -28,8 +28,8 @@ function UnlockPage() {
   useEffect(() => {
     if (typeof window !== "undefined" && window.localStorage.getItem(UNLOCK_KEY) === "true") {
       ensureSharedSession()
-        .then(() => navigate({ to: next || "/dashboard" }))
-        .catch(() => {});
+        .catch(() => {})
+        .finally(() => navigate({ to: next || "/dashboard" }));
     }
   }, [navigate, next]);
 
@@ -39,12 +39,12 @@ function UnlockPage() {
     if (password === SITE_PASSWORD) {
       try {
         await ensureSharedSession();
-        window.localStorage.setItem(UNLOCK_KEY, "true");
-        toast.success("Unlocked");
-        navigate({ to: next || "/dashboard" });
       } catch (err) {
-        toast.error(err instanceof Error ? err.message : "Sign-in failed");
+        console.warn("Shared session unavailable", err);
       }
+      window.localStorage.setItem(UNLOCK_KEY, "true");
+      toast.success("Unlocked");
+      navigate({ to: next || "/dashboard" });
     } else {
       toast.error("Incorrect password");
     }
